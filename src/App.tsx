@@ -36,11 +36,20 @@ function App() {
 
       <ul>
         {todos.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} onToggle={handleToggleTodo} />
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onToggle={handleToggleTodo}
+            onDelete={handleDeleteTodo}
+          />
         ))}
       </ul>
     </div>
   );
+
+  function handleDeleteTodo(id: number) {
+    setTodos((previousTodos) => previousTodos.filter((todo) => todo.id !== id));
+  }
 }
 
 export default App;
