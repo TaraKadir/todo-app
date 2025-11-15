@@ -1,5 +1,8 @@
+// src/App.tsx
 import { useState } from "react";
-import TodoItem, { type Todo } from "./components/TodoItem";
+import TodoItem from "./components/TodoItem";
+import type { Todo } from "./components/TodoItem";
+import TodoInput from "./components/TodoInput";
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([
@@ -7,18 +10,25 @@ function App() {
     { id: 2, title: "Bygga todo-app med React", done: true },
   ]);
 
-  function toggleTodo(id: number) {
-    setTodos((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t))
-    );
+  function handleAddTodo(title: string) {
+    const newTodo: Todo = {
+      id: Date.now(),
+      title,
+      done: false,
+    };
+
+    setTodos((previousTodos) => [...previousTodos, newTodo]);
   }
 
   return (
     <div>
       <h1>Min första React + TypeScript-app</h1>
+
+      <TodoInput onAddTodo={handleAddTodo} />
+
       <ul>
-        {todos.map((t) => (
-          <TodoItem key={t.id} todo={t} onToggle={toggleTodo} />
+        {todos.map((todo) => (
+          <TodoItem key={todo.id} todo={todo} />
         ))}
       </ul>
     </div>

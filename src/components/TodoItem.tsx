@@ -10,13 +10,12 @@ export interface Todo {
 // 2. Props-typ för komponenten
 type TodoItemProps = {
   todo: Todo;
-  onToggle: (id: number) => void;
 };
 
 // 3. Själva komponenten
-function TodoItem({ todo, onToggle }: TodoItemProps) {
+function TodoItem({ todo }: TodoItemProps) {
   return (
-    <li onClick={() => onToggle(todo.id)}>
+    <li>
       <span>{todo.title}</span>
       {todo.done && <span className="done">Done</span>}
     </li>
