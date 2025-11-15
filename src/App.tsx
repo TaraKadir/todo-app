@@ -20,6 +20,14 @@ function App() {
     setTodos((previousTodos) => [...previousTodos, newTodo]);
   }
 
+  function handleToggleTodo(id: number) {
+    setTodos((previousTodos) =>
+      previousTodos.map((todo) =>
+        todo.id === id ? { ...todo, done: !todo.done } : todo
+      )
+    );
+  }
+
   return (
     <div>
       <h1>Min första React + TypeScript-app</h1>
@@ -28,7 +36,7 @@ function App() {
 
       <ul>
         {todos.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} />
+          <TodoItem key={todo.id} todo={todo} onToggle={handleToggleTodo} />
         ))}
       </ul>
     </div>
