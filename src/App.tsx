@@ -1,14 +1,28 @@
 // src/App.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TodoItem from "./components/TodoItem";
 import type { Todo } from "./components/TodoItem";
 import TodoInput from "./components/TodoInput";
 
+const DEFAULT_TODOS: Todo[] = [
+  { id: 1, title: "Lära mig TypeScript", done: false },
+  { id: 2, title: "Bygga todo-app med React", done: true },
+];
+
 function App() {
-  const [todos, setTodos] = useState<Todo[]>([
-    { id: 1, title: "Lära mig TypeScript", done: false },
-    { id: 2, title: "Bygga todo-app med React", done: true },
-  ]);
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    const stored = localStorage.getItem("todos");
+
+    if (!stored) {
+      return DEFAULT_TODOS;
+    }
+
+    try {
+      return JSON.parse(stored) as Todo[];
+    } catch {
+      return DEFAULT_TODOS;
+    }
+  });
 
   function handleAddTodo(title: string) {
     const newTodo: Todo = {
@@ -27,6 +41,10 @@ function App() {
       )
     );
   }
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <div>
