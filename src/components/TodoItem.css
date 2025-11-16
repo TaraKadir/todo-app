@@ -1,10 +1,42 @@
 li {
-  padding: 6px 0;
-  border-bottom: 1px solid #ddd;
+  display: grid;
+  grid-template-columns: 1fr 80px 110px;
+  align-items: center;
+  padding: 1rem 1.4rem;
+  margin-bottom: 1rem;
+  background: #f1f7f7;
+  border-radius: 20px;
+  border: 1px solid #d5e5e5;
+  box-shadow: 0 2px 6px rgba(93, 104, 107, 0.05);
 }
 
+/* Todo-text */
+.todo-text {
+  cursor: pointer;
+  text-align: left;
+  justify-self: start;
+  font-size: 1rem;
+}
+
+/* Done  */
 .done {
-  color: green;
-  font-weight: bold;
-  margin-left: 8px;
+  text-align: center;
+  color: #6abec4;
+  font-weight: 600;
+}
+
+/* Ta bort-knappen */
+li button {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: none;
+  background: #5d686b;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s ease;
+}
+
+li button:hover {
+  background: #4e595d;
 }

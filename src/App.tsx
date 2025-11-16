@@ -1,4 +1,5 @@
 // src/App.tsx
+import "./App.css";
 import { useState, useEffect } from "react";
 import TodoItem from "./components/TodoItem";
 import type { Todo } from "./components/TodoItem";
@@ -42,13 +43,17 @@ function App() {
     );
   }
 
+  function handleDeleteTodo(id: number) {
+    setTodos((previousTodos) => previousTodos.filter((todo) => todo.id !== id));
+  }
+
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
   return (
-    <div>
-      <h1>Min första React + TypeScript-app</h1>
+    <div className="app">
+      <h1>Mina todos</h1>
 
       <TodoInput onAddTodo={handleAddTodo} />
 
@@ -64,10 +69,6 @@ function App() {
       </ul>
     </div>
   );
-
-  function handleDeleteTodo(id: number) {
-    setTodos((previousTodos) => previousTodos.filter((todo) => todo.id !== id));
-  }
 }
 
 export default App;

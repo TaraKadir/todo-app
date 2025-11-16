@@ -1,3 +1,4 @@
+// src/components/TodoItem.tsx
 import "./TodoItem.css";
 
 // 1. Interface för en todo
@@ -18,9 +19,11 @@ type TodoItemProps = {
 function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
   return (
     <li>
-      <span onClick={() => onToggle(todo.id)}>{todo.title}</span>
+      <span className="todo-text" onClick={() => onToggle(todo.id)}>
+        {todo.title}
+      </span>
 
-      {todo.done && <span className="done">Done</span>}
+      <span className="done">{todo.done ? "Done" : ""}</span>
 
       <button onClick={() => onDelete(todo.id)}>Ta bort</button>
     </li>
