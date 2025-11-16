@@ -5,10 +5,7 @@ import TodoItem from "./components/TodoItem";
 import type { Todo } from "./components/TodoItem";
 import TodoInput from "./components/TodoInput";
 
-const DEFAULT_TODOS: Todo[] = [
-  { id: 1, title: "Lära mig TypeScript", done: false },
-  { id: 2, title: "Bygga todo-app med React", done: true },
-];
+const DEFAULT_TODOS: Todo[] = [];
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>(() => {
