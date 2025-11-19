@@ -43,4 +43,4 @@ npm test
 Projektet är deployat via Vercel.
 
 Länk till appen:
-https://todo-app-rho-eight-4srxmgljqr.vercel.app/
+https://todo-app-rho-eight-4srxmgjlqr.vercel.app/
